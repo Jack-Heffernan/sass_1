@@ -1,0 +1,52 @@
+//Import Functions
+@import "../node_modules/bootstrap/scss/functions";
+//Globals
+$enable-rounded: true;
+$enable-shadows: false;
+$enable-gradients: true;
+
+// Theme Colours
+$primary: rgb(226, 138, 241);
+$secondary: rgb(115, 228, 248);
+
+// Variables + Mixins
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+// Custom Colours
+$custom-colors: (
+    "primary-light": rgb(222,222,222),
+    "secondary-light": rgb(222,222,222),
+);
+
+// Merge Our Colours With The Theme
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@each $color, $val in $colors {
+    .bg-#{$color}-light {
+        background-color: tint-color($val,90%);
+    }
+
+    .bg-#{$color}-dark {
+        background-color: shade-color($val,10%);
+    }
+
+    .text-#{$color}-dark {
+        color: shade-color($val,10%);
+    }
+}
+
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 2,
+  5: $spacer * 4,
+  6: $spacer * 6
+);
+
+// Import Bootstrap.scss
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
